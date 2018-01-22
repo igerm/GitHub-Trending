@@ -24,6 +24,7 @@
 		226D818F201577AF00FF0C11 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D818E201577AF00FF0C11 /* Extensions.swift */; };
 		226D81912015881A00FF0C11 /* TrendsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D81902015881A00FF0C11 /* TrendsListViewModel.swift */; };
 		226D81932015985100FF0C11 /* RepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D81922015985100FF0C11 /* RepositoryViewModel.swift */; };
+		226D81952015A98B00FF0C11 /* RepositoryDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D81942015A98B00FF0C11 /* RepositoryDetailTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		226D818E201577AF00FF0C11 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		226D81902015881A00FF0C11 /* TrendsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsListViewModel.swift; sourceTree = "<group>"; };
 		226D81922015985100FF0C11 /* RepositoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewModel.swift; sourceTree = "<group>"; };
+		226D81942015A98B00FF0C11 /* RepositoryDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailTableViewController.swift; sourceTree = "<group>"; };
 		39373534BAD16162E2F8223D /* Pods-Github Trends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Github Trends.release.xcconfig"; path = "Pods/Target Support Files/Pods-Github Trends/Pods-Github Trends.release.xcconfig"; sourceTree = "<group>"; };
 		7BF58BFD0AE358CE39190841 /* Pods-Github Trends.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Github Trends.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Github Trends/Pods-Github Trends.debug.xcconfig"; sourceTree = "<group>"; };
 		D3CA4E00DFDD0742A797D257 /* Pods_Github_Trends.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Github_Trends.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +122,7 @@
 			children = (
 				226D81722015268900FF0C11 /* TrendsTableViewController.swift */,
 				226D8174201526DB00FF0C11 /* TrendTableViewCell.swift */,
+				226D81942015A98B00FF0C11 /* RepositoryDetailTableViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Github Trends/Pods-Github Trends-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireRSSParser/AlamofireRSSParser.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
@@ -264,6 +268,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireRSSParser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
@@ -304,6 +309,7 @@
 				226D81932015985100FF0C11 /* RepositoryViewModel.swift in Sources */,
 				226D818B201576F600FF0C11 /* RepositoryRouter.swift in Sources */,
 				226D818D2015773400FF0C11 /* RouterProtocol.swift in Sources */,
+				226D81952015A98B00FF0C11 /* RepositoryDetailTableViewController.swift in Sources */,
 				226D8186201569E500FF0C11 /* RepositoryService.swift in Sources */,
 				226D81822015696600FF0C11 /* APIService.swift in Sources */,
 				226D81882015706000FF0C11 /* Repository.swift in Sources */,

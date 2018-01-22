@@ -26,7 +26,7 @@ class AccessTokenAdapter: RequestAdapter {
         var urlRequest = urlRequest
         
         //THIS IS TEMPORARY - this token only allows to browse public repositories
-        let token = "token 7585a27810f67f7ed54f05a28679290a8854e498"
+        let token = "token 8abb937f0334f8180427bcf4ecd443009e281094"
         urlRequest.setValue(token, forHTTPHeaderField: "Authorization")
         
         return urlRequest

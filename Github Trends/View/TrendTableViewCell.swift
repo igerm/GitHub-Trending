@@ -16,7 +16,6 @@ class TrendTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
         accessoryType = .disclosureIndicator
     }

@@ -42,7 +42,6 @@ class TrendsTableViewController: UITableViewController, HasRepositoryService {
         return viewModel.repositories.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TrendTableViewCell", for: indexPath) as? TrendTableViewCell else {
@@ -52,5 +51,12 @@ class TrendsTableViewController: UITableViewController, HasRepositoryService {
         cell.configure(with: viewModel.repositories[indexPath.row])
 
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let repositoryDetailTableViewController = segue.destination as? RepositoryDetailTableViewController, let cell = sender as? TrendTableViewCell, let index = tableView.indexPath(for: cell)?.row else { return }
+        
+        repositoryDetailTableViewController.viewModel = viewModel.repositories[index]
     }
 }
