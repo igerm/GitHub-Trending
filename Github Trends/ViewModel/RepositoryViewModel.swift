@@ -40,8 +40,8 @@ final class RepositoryViewModel: HasRepositoryService {
         name = repository.name
         projectDescription = repository.projectDescription
         authorUsername = repository.authorUsername
-        starsCount = "\(repository.starsCount)"
-        forksCount = "\(repository.forksCount)"
+        starsCount = "\(repository.starsCount) \(NSLocalizedString("Stars", comment: ""))"
+        forksCount = "\(repository.forksCount) \(NSLocalizedString("Forks", comment: ""))"
         rank = repository.rank
         
         if let authorProfileImageURLString = repository.authorProfileImageURLString {

@@ -27,6 +27,15 @@ final class RepositoryDetailTableViewController: UITableViewController {
         }
     }
     @IBOutlet weak var markdownViewHeightConstraint: NSLayoutConstraint?
+    @IBOutlet weak var countsContainerView: UIView? {
+        didSet {
+            countsContainerView?.layer.borderColor = #colorLiteral(red: 0.7882352941, green: 0.8274509804, blue: 0.8470588235, alpha: 1).cgColor
+            countsContainerView?.layer.borderWidth = 1
+            countsContainerView?.layer.cornerRadius = 5
+        }
+    }
+    @IBOutlet weak var starsCountLabel: UILabel?
+    @IBOutlet weak var forksCountLabel: UILabel?
     
     var viewModel: RepositoryViewModel?  {
         didSet {
@@ -61,6 +70,8 @@ final class RepositoryDetailTableViewController: UITableViewController {
         
         usernameLabel?.text = viewModel?.authorUsername
         descriptionLabel?.text = viewModel?.projectDescription
+        starsCountLabel?.text = viewModel?.starsCount
+        forksCountLabel?.text = viewModel?.forksCount
 
         markdownView?.load(markdown: viewModel?.readmeString)
         
