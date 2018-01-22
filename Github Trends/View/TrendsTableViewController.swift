@@ -10,6 +10,8 @@ import UIKit
 
 final class TrendsTableViewController: UITableViewController {
     
+    let searchController = UISearchController(searchResultsController: nil)
+    
     private var viewModel: TrendsListViewModel = TrendsListViewModel(repositories: [])  {
         didSet {
             tableView.reloadData()
@@ -57,5 +59,13 @@ final class TrendsTableViewController: UITableViewController {
         guard let repositoryDetailTableViewController = segue.destination as? RepositoryDetailTableViewController, let cell = sender as? TrendTableViewCell, let index = tableView.indexPath(for: cell)?.row else { return }
         
         repositoryDetailTableViewController.viewModel = viewModel.repositories[index]
+    }
+}
+
+extension TrendsTableViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        viewModel.filterContent(with: searchBar.text)
     }
 }

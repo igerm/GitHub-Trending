@@ -19,6 +19,15 @@ final class TrendsListViewModel: HasRepositoryService {
         }
     }
     
+    private var localRepositories: [RepositoryViewModel]?
+    
+    var filteredRepositories: [RepositoryViewModel]? {
+        didSet {
+            guard let filteredRepositories = filteredRepositories else { return }
+            repositories = filteredRepositories
+        }
+    }
+    
     var modelUpdated:((_ model: TrendsListViewModel)->())?
     
     init(repositories: [RepositoryViewModel]) {
@@ -35,9 +44,25 @@ final class TrendsListViewModel: HasRepositoryService {
                 return RepositoryViewModel(repository :repository)
             }
             
+            self?.localRepositories = repositories
             self?.repositories = repositories
             
             SVProgressHUD.dismiss()
         })
+    }
+    
+    func filterContent(with searchText: String?) {
+        
+        guard let searchText = searchText else { return }
+        
+        if searchText.isEmpty, let localRepositories = localRepositories {
+            repositories = localRepositories
+        }
+        else {
+         
+            filteredRepositories = localRepositories?.filter { repository in
+                return repository.name?.lowercased().contains(searchText.lowercased()) == true
+            }
+        }
     }
 }
