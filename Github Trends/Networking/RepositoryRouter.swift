@@ -17,7 +17,7 @@ enum RepositoryRouter: URLRequestConvertible, RouterProtocol {
     func route() throws -> Route {
         switch self {
         case .getReadme(let repository):
-            return (.get, "repos/\(repository.name ?? "")/readme", [:])
+            return (.get, "repos/\(repository.fullName ?? "")/readme", [:])
         case .getRepositoryDetails(let name):
             return (.get, "repos/\(name)", [:])
         }

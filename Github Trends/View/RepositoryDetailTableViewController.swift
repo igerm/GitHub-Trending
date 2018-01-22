@@ -9,11 +9,12 @@
 import UIKit
 import AlamofireImage
 
-class RepositoryDetailTableViewController: UITableViewController {
+final class RepositoryDetailTableViewController: UITableViewController {
     
     @IBOutlet weak var profileImageView: UIImageView?
     @IBOutlet weak var usernameLabel: UILabel?
     @IBOutlet weak var descriptionLabel: UILabel?
+    @IBOutlet weak var readmeContentLabel: UILabel?
     
     var viewModel: RepositoryViewModel?  {
         didSet {
@@ -25,6 +26,13 @@ class RepositoryDetailTableViewController: UITableViewController {
         super.viewDidLoad()
         
         reloadData()
+        
+        viewModel?.modelUpdated = { [weak self] viewModel in
+            
+            self?.viewModel = viewModel
+        }
+        
+        viewModel?.refreshData()
     }
     
     private func reloadData() {
@@ -41,5 +49,13 @@ class RepositoryDetailTableViewController: UITableViewController {
         
         usernameLabel?.text = viewModel?.authorUsername
         descriptionLabel?.text = viewModel?.projectDescription
+        readmeContentLabel?.attributedText = viewModel?.readmeAttributedString
+        
+        tableView.reloadData()
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return UITableViewAutomaticDimension
     }
 }

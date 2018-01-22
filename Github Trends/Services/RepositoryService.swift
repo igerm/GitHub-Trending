@@ -9,10 +9,14 @@
 import Alamofire
 import AlamofireRSSParser
 import AlamofireObjectMapper
+import AlamofireSwiftyJSON
+import SwiftyMarkdown
 
 protocol RepositoryServiceProtocol {
     
     func retrieveGitHubDailyTrendingRepositories(completion:((_ repositories: [Repository]) ->())?)
+    
+    func retrieveReadme(repository: Repository, completion:((_ readmeAttibutedString: NSAttributedString?) ->())?)
 }
 
 final class RepositoryService: RepositoryServiceProtocol, HasAPIService {
@@ -21,7 +25,10 @@ final class RepositoryService: RepositoryServiceProtocol, HasAPIService {
         
         Alamofire.request(Bundle.gitHubDailyTrendingURLString).responseRSS() { [weak self] (response) -> Void in
 
-            guard let items = response.result.value?.items else { return }
+            guard let items = response.result.value?.items else {
+                completion?([])
+                return
+            }
             
             let group = DispatchGroup()
             
@@ -29,7 +36,9 @@ final class RepositoryService: RepositoryServiceProtocol, HasAPIService {
             
             items.forEach({ (item) in
                 
-                guard let name = item.link?.replacingOccurrences(of: "https://github.com/", with: "") else { return }
+                guard let name = item.link?.replacingOccurrences(of: "https://github.com/", with: "") else {
+                    return
+                }
                 
                 group.enter()
                 self?.apiService?.dataRequest(forUrlRequestConvertible: RepositoryRouter.getRepositoryDetails(name: name)).responseObject { (response: DataResponse<Repository>) in
@@ -65,6 +74,26 @@ final class RepositoryService: RepositoryServiceProtocol, HasAPIService {
                 
                 completion?(allRepositories)
             })
+        }
+    }
+    
+    func retrieveReadme(repository: Repository, completion:((_ readmeAttibutedString: NSAttributedString?) ->())?) {
+        
+        apiService?.dataRequest(forUrlRequestConvertible: RepositoryRouter.getReadme(repository: repository)).responseSwiftyJSON { (response) in
+            
+            switch response.result {
+            case .success(let result):
+                
+                guard let urlString = result["download_url"].string, let url = URL(string: urlString) else {
+                    completion?(nil)
+                    return
+                }
+                
+                completion?(SwiftyMarkdown(url: url)?.attributedString())
+                
+            case.failure(_):
+                completion?(nil)
+            }
         }
     }
 }

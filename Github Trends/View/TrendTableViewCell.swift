@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TrendTableViewCell: UITableViewCell {
+final class TrendTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel?
     @IBOutlet weak var starCountLabel: UILabel?

@@ -7,8 +7,17 @@
 //
 
 import UIKit
+import SVProgressHUD
 
-struct RepositoryViewModel {
+final class RepositoryViewModel: HasRepositoryService {
+    
+    private var repository: Repository {
+        didSet {
+            modelUpdated?(self)
+        }
+    }
+    
+    var modelUpdated:((_ model: RepositoryViewModel)->())?
     
     var name: String?
     var projectDescription: String?
@@ -18,11 +27,15 @@ struct RepositoryViewModel {
     var forksCount: String?
     var rank: Int
     var url: URL?
-}
-
-extension RepositoryViewModel {
+    var readmeAttributedString: NSAttributedString? {
+        didSet {
+            modelUpdated?(self)
+        }
+    }
     
     init(repository: Repository) {
+        
+        self.repository = repository
         
         name = repository.name
         projectDescription = repository.projectDescription
@@ -38,5 +51,15 @@ extension RepositoryViewModel {
         if let urlString = repository.urlString {
             url = URL(string: urlString)
         }
+    }
+    
+    func refreshData() {
+        
+        SVProgressHUD.show()
+        repositoryService?.retrieveReadme(repository: repository, completion: { [weak self] (readmeAttributedString) in
+            
+            self?.readmeAttributedString = readmeAttributedString
+            SVProgressHUD.dismiss()
+        })
     }
 }

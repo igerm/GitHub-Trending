@@ -11,6 +11,7 @@ import ObjectMapper
 final class Repository: Mappable {
     
     var name: String?
+    var fullName: String?
     var projectDescription: String?
     var authorUsername: String?
     var authorProfileImageURLString: String?
@@ -26,6 +27,7 @@ final class Repository: Mappable {
     func mapping(map: Map) {
         
         name <- map["name"]
+        fullName <- map["full_name"]
         projectDescription <- map["description"]
         authorUsername <- map["owner.login"]
         authorProfileImageURLString <- map["owner.avatar_url"]

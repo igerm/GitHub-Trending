@@ -8,7 +8,9 @@ target 'Github Trends' do
     pod 'AlamofireObjectMapper'
     pod 'AlamofireRSSParser'
     pod 'AlamofireImage'
+    pod 'AlamofireSwiftyJSON'
     pod 'Swinject'
     pod 'SwiftyMarkdown'
+    pod 'SVProgressHUD'
     
 end

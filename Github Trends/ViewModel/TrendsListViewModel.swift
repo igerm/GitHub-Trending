@@ -7,17 +7,37 @@
 //
 
 import UIKit
+import SVProgressHUD
 
-struct TrendsListViewModel {
+final class TrendsListViewModel: HasRepositoryService {
     
     var title: String? = NSLocalizedString("GitHub Trends", comment: "")
-    var repositories: [RepositoryViewModel] = [RepositoryViewModel]()
-}
-
-extension TrendsListViewModel {
+    
+    var repositories: [RepositoryViewModel] {
+        didSet {
+            modelUpdated?(self)
+        }
+    }
+    
+    var modelUpdated:((_ model: TrendsListViewModel)->())?
     
     init(repositories: [RepositoryViewModel]) {
-        
+
         self.repositories = repositories
+    }
+    
+    func refreshData() {
+        
+        SVProgressHUD.show()
+        repositoryService?.retrieveGitHubDailyTrendingRepositories(completion: { [weak self] (repositories) in
+
+            let repositories = repositories.sorted(by: { return $0.rank < $1.rank }).map { repository in
+                return RepositoryViewModel(repository :repository)
+            }
+            
+            self?.repositories = repositories
+            
+            SVProgressHUD.dismiss()
+        })
     }
 }

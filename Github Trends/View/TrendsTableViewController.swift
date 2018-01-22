@@ -8,9 +8,9 @@
 
 import UIKit
 
-class TrendsTableViewController: UITableViewController, HasRepositoryService {
+final class TrendsTableViewController: UITableViewController {
     
-    private var viewModel: TrendsListViewModel = TrendsListViewModel()  {
+    private var viewModel: TrendsListViewModel = TrendsListViewModel(repositories: [])  {
         didSet {
             tableView.reloadData()
         }
@@ -21,24 +21,18 @@ class TrendsTableViewController: UITableViewController, HasRepositoryService {
         
         title = viewModel.title
         
-        refreshData()
+        viewModel.refreshData()
+        
+        viewModel.modelUpdated = { [weak self] viewModel in
+            
+            self?.viewModel = viewModel
+        }
     }
     
-    private func refreshData() {
-    
-        repositoryService?.retrieveGitHubDailyTrendingRepositories(completion: { [weak self] (repositories) in
-            
-            let repositories = repositories.map { repository in
-                return RepositoryViewModel(repository :repository)
-            }
-            
-            self?.viewModel = TrendsListViewModel(repositories: repositories)
-        })
-    }
-
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return viewModel.repositories.count
     }
 
