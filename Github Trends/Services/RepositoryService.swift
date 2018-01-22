@@ -16,13 +16,14 @@ protocol RepositoryServiceProtocol {
     
     func retrieveGitHubDailyTrendingRepositories(completion:((_ repositories: [Repository]) ->())?)
     
-    func retrieveReadme(repository: Repository, completion:((_ readmeAttibutedString: NSAttributedString?) ->())?)
+    func retrieveReadme(repository: Repository, completion:((_ readmeString: String?) ->())?)
 }
 
 final class RepositoryService: RepositoryServiceProtocol, HasAPIService {
 
     func retrieveGitHubDailyTrendingRepositories(completion:((_ repositories: [Repository]) ->())?) {
         
+        //GitHub Trending API Endpoint doesn't exist so I found an RSS feed to use
         Alamofire.request(Bundle.gitHubDailyTrendingURLString).responseRSS() { [weak self] (response) -> Void in
 
             guard let items = response.result.value?.items else {
@@ -36,6 +37,7 @@ final class RepositoryService: RepositoryServiceProtocol, HasAPIService {
             
             items.forEach({ (item) in
                 
+                //I need to strip the domain to get the path of the repo
                 guard let name = item.link?.replacingOccurrences(of: "https://github.com/", with: "") else {
                     return
                 }
@@ -43,27 +45,21 @@ final class RepositoryService: RepositoryServiceProtocol, HasAPIService {
                 group.enter()
                 self?.apiService?.dataRequest(forUrlRequestConvertible: RepositoryRouter.getRepositoryDetails(name: name)).responseObject { (response: DataResponse<Repository>) in
                     
-                    print(response.request?.url ?? "")
-                    
                     switch response.result {
                     case .success(let repository):
                         
-                        print(repository.name ?? "nil")
-                        
+                        //We can rely on the order of the array to find the ranking also looks like the only way appart from stripping down the title
                         if let index = items.index(where: {
                             
                             return $0.link == item.link
                         }) {
-                            
-                            print("rank: \(index)\n...")
                             repository.rank = index
                         }
                         
                         allRepositories.append(repository)
                         
-                    case.failure(let error):
-                        
-                        print(error)
+                    case.failure(_):
+                        break
                     }
                     
                     group.leave()
@@ -77,7 +73,7 @@ final class RepositoryService: RepositoryServiceProtocol, HasAPIService {
         }
     }
     
-    func retrieveReadme(repository: Repository, completion:((_ readmeAttibutedString: NSAttributedString?) ->())?) {
+    func retrieveReadme(repository: Repository, completion:((_ readmeString: String?) ->())?) {
         
         apiService?.dataRequest(forUrlRequestConvertible: RepositoryRouter.getReadme(repository: repository)).responseSwiftyJSON { (response) in
             
@@ -89,7 +85,14 @@ final class RepositoryService: RepositoryServiceProtocol, HasAPIService {
                     return
                 }
                 
-                completion?(SwiftyMarkdown(url: url)?.attributedString())
+                let session = URLSession(configuration: .default)
+                let task = session.dataTask(with: url) { data, _, _ in
+                    let str = String(data: data!, encoding: String.Encoding.utf8)
+                    DispatchQueue.main.async {
+                        completion?(str)
+                    }
+                }
+                task.resume()
                 
             case.failure(_):
                 completion?(nil)

@@ -8,13 +8,25 @@
 
 import UIKit
 import AlamofireImage
+import MarkdownView
+import SVProgressHUD
 
 final class RepositoryDetailTableViewController: UITableViewController {
     
     @IBOutlet weak var profileImageView: UIImageView?
     @IBOutlet weak var usernameLabel: UILabel?
     @IBOutlet weak var descriptionLabel: UILabel?
-    @IBOutlet weak var readmeContentLabel: UILabel?
+    @IBOutlet weak var markdownView: MarkdownView? {
+        didSet {
+            markdownView?.isScrollEnabled = false
+            markdownView?.onRendered = { [weak self] height in
+                
+                self?.markdownViewHeightConstraint?.constant = height + 50
+                self?.tableView.reloadData()
+            }
+        }
+    }
+    @IBOutlet weak var markdownViewHeightConstraint: NSLayoutConstraint?
     
     var viewModel: RepositoryViewModel?  {
         didSet {
@@ -49,13 +61,14 @@ final class RepositoryDetailTableViewController: UITableViewController {
         
         usernameLabel?.text = viewModel?.authorUsername
         descriptionLabel?.text = viewModel?.projectDescription
-        readmeContentLabel?.attributedText = viewModel?.readmeAttributedString
+
+        markdownView?.load(markdown: viewModel?.readmeString)
         
         tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
+
         return UITableViewAutomaticDimension
     }
 }

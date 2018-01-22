@@ -10,7 +10,7 @@ target 'Github Trends' do
     pod 'AlamofireImage'
     pod 'AlamofireSwiftyJSON'
     pod 'Swinject'
-    pod 'SwiftyMarkdown'
     pod 'SVProgressHUD'
+    pod 'MarkdownView'
     
 end

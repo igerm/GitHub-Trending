@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		063901652016726A00C71151 /* CountsContainerStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063901642016726A00C71151 /* CountsContainerStackView.swift */; };
+		06390167201674A200C71151 /* CountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06390166201674A200C71151 /* CountView.swift */; };
 		1942A63521D134C22BC86DEF /* Pods_Github_Trends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3CA4E00DFDD0742A797D257 /* Pods_Github_Trends.framework */; };
 		226D815C20151E3500FF0C11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D815B20151E3500FF0C11 /* AppDelegate.swift */; };
 		226D816120151E3500FF0C11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 226D815F20151E3500FF0C11 /* Main.storyboard */; };
@@ -28,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		063901642016726A00C71151 /* CountsContainerStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountsContainerStackView.swift; sourceTree = "<group>"; };
+		06390166201674A200C71151 /* CountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountView.swift; sourceTree = "<group>"; };
 		226D815820151E3500FF0C11 /* Github Trends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Github Trends.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		226D815B20151E3500FF0C11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		226D816020151E3500FF0C11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -123,6 +127,8 @@
 				226D81722015268900FF0C11 /* TrendsTableViewController.swift */,
 				226D8174201526DB00FF0C11 /* TrendTableViewCell.swift */,
 				226D81942015A98B00FF0C11 /* RepositoryDetailTableViewController.swift */,
+				063901642016726A00C71151 /* CountsContainerStackView.swift */,
+				06390166201674A200C71151 /* CountView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -262,6 +268,7 @@
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireRSSParser/AlamofireRSSParser.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireSwiftyJSON/AlamofireSwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/MarkdownView/MarkdownView.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -275,6 +282,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireRSSParser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireSwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarkdownView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -313,6 +321,7 @@
 			files = (
 				226D81832015696600FF0C11 /* ServiceFactory.swift in Sources */,
 				226D81932015985100FF0C11 /* RepositoryViewModel.swift in Sources */,
+				063901652016726A00C71151 /* CountsContainerStackView.swift in Sources */,
 				226D818B201576F600FF0C11 /* RepositoryRouter.swift in Sources */,
 				226D818D2015773400FF0C11 /* RouterProtocol.swift in Sources */,
 				226D81952015A98B00FF0C11 /* RepositoryDetailTableViewController.swift in Sources */,
@@ -324,6 +333,7 @@
 				226D81912015881A00FF0C11 /* TrendsListViewModel.swift in Sources */,
 				226D81842015696600FF0C11 /* Bootstrapper.swift in Sources */,
 				226D818F201577AF00FF0C11 /* Extensions.swift in Sources */,
+				06390167201674A200C71151 /* CountView.swift in Sources */,
 				226D8175201526DB00FF0C11 /* TrendTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,6 +476,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SQ3X9ZKRV4;
 				GITHUB_DAILY_TRENDING_URL = "http://github-trends.ryotarai.info/rss/github_trends_all_daily.rss";
+				GITHUB_PERSONAL_TOKEN = 9202205c5e65e902d93241ba402ffdb0e7a41e83;
 				INFOPLIST_FILE = "Github Trends/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SamuelTremblay.Github-Trends";
@@ -484,6 +495,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SQ3X9ZKRV4;
 				GITHUB_DAILY_TRENDING_URL = "http://github-trends.ryotarai.info/rss/github_trends_all_daily.rss";
+				GITHUB_PERSONAL_TOKEN = 9202205c5e65e902d93241ba402ffdb0e7a41e83;
 				INFOPLIST_FILE = "Github Trends/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SamuelTremblay.Github-Trends";

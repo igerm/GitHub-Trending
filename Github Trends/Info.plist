@@ -48,6 +48,8 @@
 	</array>
 	<key>GITHUB_DAILY_TRENDING_URL</key>
 	<string>$(GITHUB_DAILY_TRENDING_URL)</string>
+	<key>GITHUB_PERSONAL_TOKEN</key>
+	<string>$(GITHUB_PERSONAL_TOKEN)</string>
 	<key>API_BASE_URL</key>
 	<string>$(API_BASE_URL)</string>
 </dict>

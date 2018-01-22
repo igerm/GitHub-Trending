@@ -17,4 +17,8 @@ extension Bundle {
     class var gitHubDailyTrendingURLString: String {
         return Bundle.main.infoDictionary?["GITHUB_DAILY_TRENDING_URL"] as? String ?? ""
     }
+    
+    class var gitHubPersonalTokenString: String {
+        return Bundle.main.infoDictionary?["GITHUB_PERSONAL_TOKEN"] as? String ?? ""
+    }
 }

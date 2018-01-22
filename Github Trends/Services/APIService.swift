@@ -26,7 +26,7 @@ class AccessTokenAdapter: RequestAdapter {
         var urlRequest = urlRequest
         
         //THIS IS TEMPORARY - this token only allows to browse public repositories
-        let token = "token 9202205c5e65e902d93241ba402ffdb0e7a41e83"
+        let token = "token \(Bundle.gitHubPersonalTokenString)"
         urlRequest.setValue(token, forHTTPHeaderField: "Authorization")
         
         return urlRequest

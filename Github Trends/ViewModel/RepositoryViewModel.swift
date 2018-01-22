@@ -27,7 +27,7 @@ final class RepositoryViewModel: HasRepositoryService {
     var forksCount: String?
     var rank: Int
     var url: URL?
-    var readmeAttributedString: NSAttributedString? {
+    var readmeString: String? {
         didSet {
             modelUpdated?(self)
         }
@@ -56,9 +56,9 @@ final class RepositoryViewModel: HasRepositoryService {
     func refreshData() {
         
         SVProgressHUD.show()
-        repositoryService?.retrieveReadme(repository: repository, completion: { [weak self] (readmeAttributedString) in
+        repositoryService?.retrieveReadme(repository: repository, completion: { [weak self] (readmeString) in
             
-            self?.readmeAttributedString = readmeAttributedString
+            self?.readmeString = readmeString
             SVProgressHUD.dismiss()
         })
     }

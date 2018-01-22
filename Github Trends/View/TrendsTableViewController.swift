@@ -19,7 +19,12 @@ final class TrendsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Trick to remove navigation bar bottom separator
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
         title = viewModel.title
+        
+        tableView.tableFooterView = UIView()
         
         viewModel.refreshData()
         
