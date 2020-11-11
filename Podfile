@@ -12,5 +12,5 @@ target 'Github Trends' do
     pod 'Swinject'
     pod 'SVProgressHUD'
     pod 'MarkdownView'
-    
+    pod 'RealmSwift'
 end

@@ -10,6 +10,11 @@ PODS:
     - Alamofire (~> 4.0)
     - SwiftyJSON (~> 4.0)
   - MarkdownView (1.1.0)
+  - Realm (10.1.2):
+    - Realm/Headers (= 10.1.2)
+  - Realm/Headers (10.1.2)
+  - RealmSwift (10.1.2):
+    - Realm (= 10.1.2)
   - SVProgressHUD (2.2.2)
   - SwiftyJSON (4.3.0)
   - Swinject (2.1.1)
@@ -20,6 +25,7 @@ DEPENDENCIES:
   - AlamofireRSSParser
   - AlamofireSwiftyJSON
   - MarkdownView
+  - RealmSwift
   - SVProgressHUD
   - Swinject
 
@@ -31,6 +37,8 @@ SPEC REPOS:
     - AlamofireRSSParser
     - AlamofireSwiftyJSON
     - MarkdownView
+    - Realm
+    - RealmSwift
     - SVProgressHUD
     - SwiftyJSON
     - Swinject
@@ -42,10 +50,12 @@ SPEC CHECKSUMS:
   AlamofireRSSParser: 4feb3c8cedf1fba2759ba30cf37cdf6ba45efd38
   AlamofireSwiftyJSON: 74ee3804bed06d07857daf1eeb1615c85dba3997
   MarkdownView: 80db8e9a27a6c6cc22615e644e3e85c06065bab7
+  Realm: 031fdd4be7094d01b43af1a5e49766ab644bb800
+  RealmSwift: 43cf2e114baa9d17d34eb81e7d0def31f21cd444
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   Swinject: afea49fd95f392b41171669f165842879c48fad6
 
-PODFILE CHECKSUM: 346621930329f1ad3c99a616d24670c0e8883758
+PODFILE CHECKSUM: 8fca95aba0b36d69d92824931ca615f440fdb6db
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.0

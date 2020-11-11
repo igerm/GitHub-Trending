@@ -9,7 +9,7 @@
 import UIKit
 import SVProgressHUD
 
-final class RepositoryViewModel: HasRepositoryService {
+final class RepositoryViewModel {
     
     private var repository: Repository {
         didSet {
@@ -50,14 +50,5 @@ final class RepositoryViewModel: HasRepositoryService {
         if let urlString = repository.urlString {
             url = URL(string: urlString)
         }
-    }
-    
-    func refreshData() {
-        SVProgressHUD.show()
-        repositoryService?.retrieveReadme(repository: repository, completion: { [weak self] (readmeString) in
-            
-            self?.readmeString = readmeString
-            SVProgressHUD.dismiss()
-        })
     }
 }

@@ -25,6 +25,11 @@
 		226D81932015985100FF0C11 /* RepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D81922015985100FF0C11 /* RepositoryViewModel.swift */; };
 		226D81952015A98B00FF0C11 /* RepositoryDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D81942015A98B00FF0C11 /* RepositoryDetailTableViewController.swift */; };
 		229A919A255B673F008CB931 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229A9199255B673F008CB931 /* Owner.swift */; };
+		229A91D9255B7FCF008CB931 /* DataAccessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229A91D8255B7FCF008CB931 /* DataAccessService.swift */; };
+		229A91EA255B8199008CB931 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229A91E9255B8199008CB931 /* DatabaseService.swift */; };
+		229A91F1255B85C4008CB931 /* DataAccessRequestConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229A91F0255B85C4008CB931 /* DataAccessRequestConvertible.swift */; };
+		229A91F4255B8679008CB931 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229A91F3255B8679008CB931 /* Response.swift */; };
+		229A91F8255B8F87008CB931 /* RepositoryDataAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229A91F7255B8F87008CB931 /* RepositoryDataAccessor.swift */; };
 		E07C085BF5CB2B6A5E13C3A4 /* Pods_Github_Trends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DDD5B9FDE1DFFE1888953A9 /* Pods_Github_Trends.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +54,11 @@
 		226D81922015985100FF0C11 /* RepositoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewModel.swift; sourceTree = "<group>"; };
 		226D81942015A98B00FF0C11 /* RepositoryDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailTableViewController.swift; sourceTree = "<group>"; };
 		229A9199255B673F008CB931 /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
+		229A91D8255B7FCF008CB931 /* DataAccessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAccessService.swift; sourceTree = "<group>"; };
+		229A91E9255B8199008CB931 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		229A91F0255B85C4008CB931 /* DataAccessRequestConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAccessRequestConvertible.swift; sourceTree = "<group>"; };
+		229A91F3255B8679008CB931 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		229A91F7255B8F87008CB931 /* RepositoryDataAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDataAccessor.swift; sourceTree = "<group>"; };
 		2DDD5B9FDE1DFFE1888953A9 /* Pods_Github_Trends.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Github_Trends.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46B4C1C44442EC73E45B8116 /* Pods-Github Trends.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Github Trends.debug.xcconfig"; path = "Target Support Files/Pods-Github Trends/Pods-Github Trends.debug.xcconfig"; sourceTree = "<group>"; };
 		FC20CCA9FA43A4D08C0D88B2 /* Pods-Github Trends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Github Trends.release.xcconfig"; path = "Target Support Files/Pods-Github Trends/Pods-Github Trends.release.xcconfig"; sourceTree = "<group>"; };
@@ -136,6 +146,8 @@
 				226D81802015696600FF0C11 /* ServiceFactory.swift */,
 				226D81812015696600FF0C11 /* Bootstrapper.swift */,
 				226D817F2015696600FF0C11 /* APIService.swift */,
+				229A91D8255B7FCF008CB931 /* DataAccessService.swift */,
+				229A91E9255B8199008CB931 /* DatabaseService.swift */,
 				226D8185201569E500FF0C11 /* RepositoryService.swift */,
 			);
 			path = Services;
@@ -145,6 +157,9 @@
 			isa = PBXGroup;
 			children = (
 				226D818C2015773400FF0C11 /* RouterProtocol.swift */,
+				229A91F0255B85C4008CB931 /* DataAccessRequestConvertible.swift */,
+				229A91F3255B8679008CB931 /* Response.swift */,
+				229A91F7255B8F87008CB931 /* RepositoryDataAccessor.swift */,
 				226D818A201576F600FF0C11 /* RepositoryRouter.swift */,
 			);
 			path = Networking;
@@ -250,6 +265,8 @@
 				"${BUILT_PRODUCTS_DIR}/AlamofireRSSParser/AlamofireRSSParser.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireSwiftyJSON/AlamofireSwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/MarkdownView/MarkdownView.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
@@ -262,6 +279,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireRSSParser.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireSwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarkdownView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
@@ -300,12 +319,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				229A91EA255B8199008CB931 /* DatabaseService.swift in Sources */,
 				226D81832015696600FF0C11 /* ServiceFactory.swift in Sources */,
 				226D81932015985100FF0C11 /* RepositoryViewModel.swift in Sources */,
 				226D818B201576F600FF0C11 /* RepositoryRouter.swift in Sources */,
 				226D818D2015773400FF0C11 /* RouterProtocol.swift in Sources */,
+				229A91F4255B8679008CB931 /* Response.swift in Sources */,
 				226D81952015A98B00FF0C11 /* RepositoryDetailTableViewController.swift in Sources */,
 				226D8186201569E500FF0C11 /* RepositoryService.swift in Sources */,
+				229A91F8255B8F87008CB931 /* RepositoryDataAccessor.swift in Sources */,
+				229A91F1255B85C4008CB931 /* DataAccessRequestConvertible.swift in Sources */,
 				226D81822015696600FF0C11 /* APIService.swift in Sources */,
 				226D81882015706000FF0C11 /* Repository.swift in Sources */,
 				226D815C20151E3500FF0C11 /* AppDelegate.swift in Sources */,
@@ -315,6 +338,7 @@
 				226D818F201577AF00FF0C11 /* Extensions.swift in Sources */,
 				229A919A255B673F008CB931 /* Owner.swift in Sources */,
 				226D8175201526DB00FF0C11 /* TrendTableViewCell.swift in Sources */,
+				229A91D9255B7FCF008CB931 /* DataAccessService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

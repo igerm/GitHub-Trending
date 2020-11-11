@@ -43,6 +43,8 @@ final class RepositoryDetailTableViewController: UITableViewController {
         }
     }
 
+    private var repositoryService: RepositoryServiceProtocol?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,8 +53,6 @@ final class RepositoryDetailTableViewController: UITableViewController {
         viewModel?.modelUpdated = { [weak self] viewModel in
             self?.viewModel = viewModel
         }
-        
-        viewModel?.refreshData()
     }
     
     private func reloadData() {
@@ -71,7 +71,14 @@ final class RepositoryDetailTableViewController: UITableViewController {
         forksCountLabel?.text = viewModel?.forksCount
 
         markdownView?.load(markdown: viewModel?.readmeString)
-        
+
+//        SVProgressHUD.show()
+//        repositoryService?.retrieveReadme(repository: repository, completion: { [weak self] (readmeString) in
+//
+//            self?.readmeString = readmeString
+//            SVProgressHUD.dismiss()
+//        })
+//        
         tableView.reloadData()
     }
     

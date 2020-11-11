@@ -14,16 +14,24 @@ final class TrendTableViewCell: UITableViewCell {
     @IBOutlet weak var starCountLabel: UILabel?
     @IBOutlet weak var descriptionLabel: UILabel?
 
+    var repository: Repository? {
+        didSet {
+            configureSubviews()
+        }
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         
         accessoryType = .disclosureIndicator
     }
-    
-    func configure(with repository: RepositoryViewModel) {
-        
-        titleLabel?.text = repository.name
-        starCountLabel?.text = repository.starsCount
-        descriptionLabel?.text = repository.projectDescription
+}
+
+private extension TrendTableViewCell {
+
+    func configureSubviews() {
+        titleLabel?.text = repository?.name
+        starCountLabel?.text = "\(repository?.starsCount ?? 0) \(NSLocalizedString("Stars", comment: ""))"
+        descriptionLabel?.text = repository?.projectDescription
     }
 }

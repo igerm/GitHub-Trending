@@ -8,24 +8,6 @@
 
 enum ServiceFactory {
     static func resolve<Service>(serviceType: Service.Type) -> Service? {
-        return Bootstrapper.getContainer().resolve(serviceType)
-    }
-}
-
-// MARK: Repository Service
-
-protocol HasRepositoryService { }
-extension HasRepositoryService {
-    var repositoryService: RepositoryServiceProtocol? {
-        return ServiceFactory.resolve(serviceType: RepositoryServiceProtocol.self)
-    }
-}
-
-// MARK: APIService
-
-protocol HasAPIService { }
-extension HasAPIService {
-    var apiService: APIServiceProtocol? {
-        return ServiceFactory.resolve(serviceType: APIServiceProtocol.self)
+        Bootstrapper.getContainer().resolve(serviceType)
     }
 }

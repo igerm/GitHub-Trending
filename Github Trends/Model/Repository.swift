@@ -6,7 +6,9 @@
 //  Copyright © 2018 Samuel Tremblay. All rights reserved.
 //
 
-final class Repository: Codable {
+import RealmSwift
+
+final class Repository: Object, Codable {
 
     enum CodingKeys: String, CodingKey {
         case name

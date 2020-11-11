@@ -9,7 +9,7 @@
 import UIKit
 import SVProgressHUD
 
-final class TrendsListViewModel: HasRepositoryService {
+final class TrendsListViewModel {
     
     var title: String? = NSLocalizedString("GitHub Trends", comment: "")
     
@@ -35,33 +35,15 @@ final class TrendsListViewModel: HasRepositoryService {
         self.repositories = repositories
     }
     
-    func refreshData() {
-        
-        SVProgressHUD.show()
-        repositoryService?.retrieveGitHubDailyTrendingRepositories(completion: { [weak self] (repositories) in
-
-            let repositories = repositories.sorted(by: { return $0.rank < $1.rank }).map { repository in
-                return RepositoryViewModel(repository :repository)
-            }
-            
-            self?.localRepositories = repositories
-            self?.repositories = repositories
-            
-            SVProgressHUD.dismiss()
-        })
-    }
-    
     func filterContent(with searchText: String?) {
-        
         guard let searchText = searchText else { return }
         
         if searchText.isEmpty, let localRepositories = localRepositories {
             repositories = localRepositories
         }
         else {
-         
             filteredRepositories = localRepositories?.filter { repository in
-                return repository.name?.lowercased().contains(searchText.lowercased()) == true
+                repository.name?.lowercased().contains(searchText.lowercased()) == true
             }
         }
     }

@@ -6,13 +6,13 @@
 //  Copyright © 2018 Samuel Tremblay. All rights reserved.
 //
 
-import UIKit
+import SVProgressHUD
 
 final class TrendsTableViewController: UITableViewController {
     
-    let searchController = UISearchController(searchResultsController: nil)
-    
-    private var viewModel: TrendsListViewModel = TrendsListViewModel(repositories: [])  {
+    private let searchController = UISearchController(searchResultsController: nil)
+
+    private var repositories: [Repository] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -24,48 +24,56 @@ final class TrendsTableViewController: UITableViewController {
         //Trick to remove navigation bar bottom separator
         navigationController?.navigationBar.shadowImage = UIImage()
         
-        title = viewModel.title
+        title = NSLocalizedString("GitHub Trends", comment: "")
         
         tableView.tableFooterView = UIView()
-        
-        viewModel.refreshData()
-        
-        viewModel.modelUpdated = { [weak self] viewModel in
-            
-            self?.viewModel = viewModel
-        }
+
+        refreshData()
     }
     
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return viewModel.repositories.count
+        repositories.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TrendTableViewCell", for: indexPath) as? TrendTableViewCell else {
             return UITableViewCell()
         }
-        
-        cell.configure(with: viewModel.repositories[indexPath.row])
-
+        cell.repository = repositories[indexPath.row]
         return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        guard let repositoryDetailTableViewController = segue.destination as? RepositoryDetailTableViewController, let cell = sender as? TrendTableViewCell, let index = tableView.indexPath(for: cell)?.row else { return }
-        
-        repositoryDetailTableViewController.viewModel = viewModel.repositories[index]
+//        guard let repositoryDetailTableViewController = segue.destination as? RepositoryDetailTableViewController, let cell = sender as? TrendTableViewCell, let index = tableView.indexPath(for: cell)?.row else { return }
+//
+//        repositoryDetailTableViewController.viewModel = viewModel.repositories[index]
+    }
+}
+
+private extension TrendsTableViewController {
+
+    func refreshData() {
+//        SVProgressHUD.show()
+//        repositoryService?.retrieveGitHubDailyTrendingRepositories(completion: { [weak self] (repositories) in
+//
+//            let repositories = repositories.sorted(by: { return $0.rank < $1.rank }).map { repository in
+//                return RepositoryViewModel(repository :repository)
+//            }
+//
+//            self?.localRepositories = repositories
+//            self?.repositories = repositories
+//
+//            SVProgressHUD.dismiss()
+//        })
     }
 }
 
 extension TrendsTableViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        viewModel.filterContent(with: searchBar.text)
+//        viewModel.filterContent(with: searchBar.text)
     }
 }

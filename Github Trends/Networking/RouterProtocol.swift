@@ -8,6 +8,10 @@
 
 import Alamofire
 
+protocol RestfulObject: Codable {
+    static var path: String { get }
+}
+
 typealias Route = (method: Alamofire.HTTPMethod, path: String, parameters: Any)
 
 protocol RouterProtocol {
