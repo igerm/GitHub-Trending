@@ -8,9 +8,8 @@
 
 import Alamofire
 import AlamofireRSSParser
-import AlamofireObjectMapper
 import AlamofireSwiftyJSON
-import SwiftyMarkdown
+import AlamofireCodable
 
 protocol RepositoryServiceProtocol {
     
@@ -22,10 +21,8 @@ protocol RepositoryServiceProtocol {
 final class RepositoryService: RepositoryServiceProtocol, HasAPIService {
 
     func retrieveGitHubDailyTrendingRepositories(completion:((_ repositories: [Repository]) ->())?) {
-        
         //GitHub Trending API Endpoint doesn't exist so I found an RSS feed to use
-        Alamofire.request(Bundle.gitHubDailyTrendingURLString).responseRSS() { [weak self] (response) -> Void in
-
+        Alamofire.request(Bundle.gitHubDailyTrendingURLString).responseRSS() { [weak self] response -> Void in
             guard let items = response.result.value?.items else {
                 completion?([])
                 return
@@ -35,7 +32,7 @@ final class RepositoryService: RepositoryServiceProtocol, HasAPIService {
             
             var allRepositories: [Repository] = []
             
-            items.forEach({ (item) in
+            items.forEach { item in
                 
                 //I need to strip the domain to get the path of the repo
                 guard let name = item.link?.replacingOccurrences(of: "https://github.com/", with: "") else {
@@ -43,40 +40,36 @@ final class RepositoryService: RepositoryServiceProtocol, HasAPIService {
                 }
                 
                 group.enter()
-                self?.apiService?.dataRequest(forUrlRequestConvertible: RepositoryRouter.getRepositoryDetails(name: name)).responseObject { (response: DataResponse<Repository>) in
+                self?.apiService?.dataRequest(for: RepositoryRouter.getRepositoryDetails(name: name)).responseObject(completionHandler: { (response: DataResponse<Repository>) in
                     
                     switch response.result {
                     case .success(let repository):
                         
                         //We can rely on the order of the array to find the ranking also looks like the only way appart from stripping down the title
-                        if let index = items.index(where: {
-                            
-                            return $0.link == item.link
+                        if let index = items.firstIndex(where: {
+                            $0.link == item.link
                         }) {
                             repository.rank = index
                         }
                         
                         allRepositories.append(repository)
                         
-                    case.failure(_):
+                    case .failure:
                         break
                     }
                     
                     group.leave()
-                }
-            })
+                })
+            }
             
             group.notify(queue: .main, execute: {
-                
                 completion?(allRepositories)
             })
         }
     }
     
     func retrieveReadme(repository: Repository, completion:((_ readmeString: String?) ->())?) {
-        
-        apiService?.dataRequest(forUrlRequestConvertible: RepositoryRouter.getReadme(repository: repository)).responseSwiftyJSON { (response) in
-            
+        apiService?.dataRequest(for: RepositoryRouter.getReadme(repository: repository)).responseSwiftyJSON { response in
             switch response.result {
             case .success(let result):
                 
@@ -94,7 +87,7 @@ final class RepositoryService: RepositoryServiceProtocol, HasAPIService {
                 }
                 task.resume()
                 
-            case.failure(_):
+            case .failure:
                 completion?(nil)
             }
         }

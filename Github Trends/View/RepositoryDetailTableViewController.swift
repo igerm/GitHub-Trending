@@ -49,7 +49,6 @@ final class RepositoryDetailTableViewController: UITableViewController {
         reloadData()
         
         viewModel?.modelUpdated = { [weak self] viewModel in
-            
             self?.viewModel = viewModel
         }
         
@@ -57,11 +56,9 @@ final class RepositoryDetailTableViewController: UITableViewController {
     }
     
     private func reloadData() {
-        
         title = viewModel?.name
         
         if let authorProfileImageURL = viewModel?.authorProfileImageURL {
-            
             profileImageView?.af_setImage(withURL: authorProfileImageURL)
         }
         else {
@@ -79,7 +76,6 @@ final class RepositoryDetailTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-
-        return UITableViewAutomaticDimension
+        UITableView.automaticDimension
     }
 }

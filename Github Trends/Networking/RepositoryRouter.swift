@@ -6,7 +6,6 @@
 //  Copyright © 2018 Samuel Tremblay. All rights reserved.
 //
 
-import Foundation
 import Alamofire
 
 enum RepositoryRouter: URLRequestConvertible, RouterProtocol {

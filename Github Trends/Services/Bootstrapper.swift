@@ -6,7 +6,6 @@
 //  Copyright © 2018 Samuel Tremblay. All rights reserved.
 //
 
-import Foundation
 import Swinject
 
 struct Bootstrapper {
@@ -20,6 +19,6 @@ struct Bootstrapper {
     }
     
     static func getContainer() -> Container {
-        return Bootstrapper.sharedInstance.container
+        Bootstrapper.sharedInstance.container
     }
 }

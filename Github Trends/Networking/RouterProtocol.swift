@@ -6,9 +6,7 @@
 //  Copyright © 2018 Samuel Tremblay. All rights reserved.
 //
 
-import Foundation
 import Alamofire
-import ObjectMapper
 
 typealias Route = (method: Alamofire.HTTPMethod, path: String, parameters: Any)
 
@@ -21,7 +19,6 @@ protocol RouterProtocol {
 extension RouterProtocol {
     
     func baseUrl() throws -> URL {
-        
         guard let baseUrl = URL(string: Bundle.baseUrlString) else {
             throw NSError()
         }

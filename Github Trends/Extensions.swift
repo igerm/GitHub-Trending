@@ -11,14 +11,14 @@ import Foundation
 extension Bundle {
     
     class var baseUrlString: String {
-        return Bundle.main.infoDictionary?["API_BASE_URL"] as? String ?? ""
+        Bundle.main.infoDictionary?["API_BASE_URL"] as? String ?? ""
     }
     
     class var gitHubDailyTrendingURLString: String {
-        return Bundle.main.infoDictionary?["GITHUB_DAILY_TRENDING_URL"] as? String ?? ""
+        Bundle.main.infoDictionary?["GITHUB_DAILY_TRENDING_URL"] as? String ?? ""
     }
     
     class var gitHubPersonalTokenString: String {
-        return Bundle.main.infoDictionary?["GITHUB_PERSONAL_TOKEN"] as? String ?? ""
+        Bundle.main.infoDictionary?["GITHUB_PERSONAL_TOKEN"] as? String ?? ""
     }
 }

@@ -7,20 +7,18 @@
 //
 
 import Alamofire
-import ObjectMapper
-
-enum APIResult<T> {
-    case success(T)
-    case failure(error:Error)
-}
 
 protocol APIServiceProtocol {
-    
-    func dataRequest(forUrlRequestConvertible urlRequestconvertible: URLRequestConvertible) -> DataRequest
+
+    /// Create a data request corresponding to the given URLRequestConvertible object
+    ///
+    /// - Parameter urlRequestconvertible: URLRequestConvertible object for the request
+    /// - Returns: Resulting data request object (JSON data request)
+    func dataRequest(for urlRequestconvertible: URLRequestConvertible) -> DataRequest
 }
 
 /// Adapt any outgoing request to protected endpoints to carry the auth token
-class AccessTokenAdapter: RequestAdapter {
+final class AccessTokenAdapter: RequestAdapter {
     
     func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
         var urlRequest = urlRequest
@@ -34,25 +32,20 @@ class AccessTokenAdapter: RequestAdapter {
 }
 
 final class APIService: APIServiceProtocol {
-    
-    //MARK: - Set up
-    let sessionManager: SessionManager = {
-        let configuration = URLSessionConfiguration.default
+
+    private let sessionManager: SessionManager = {
+        let configuration: URLSessionConfiguration = .default
         configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
         
         let sessionManager = SessionManager(configuration: configuration)
         sessionManager.adapter = AccessTokenAdapter()
         return sessionManager
     }()
-    
-    /// Create a data request corresponding to the given URLRequestConvertible object
-    ///
-    /// - Parameter urlRequestconvertible: URLRequestConvertible object for the request
-    /// - Returns: Resulting data request object (JSON data request)
-    internal func dataRequest(forUrlRequestConvertible urlRequestconvertible: URLRequestConvertible) -> DataRequest {
-        
-        let request = sessionManager.request(urlRequestconvertible)
-        
-        return request
+}
+
+internal extension APIService {
+
+    func dataRequest(for urlRequestconvertible: URLRequestConvertible) -> DataRequest {
+        sessionManager.request(urlRequestconvertible)
     }
 }

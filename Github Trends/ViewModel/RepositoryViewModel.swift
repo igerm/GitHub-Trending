@@ -34,17 +34,16 @@ final class RepositoryViewModel: HasRepositoryService {
     }
     
     init(repository: Repository) {
-        
         self.repository = repository
         
         name = repository.name
         projectDescription = repository.projectDescription
-        authorUsername = repository.authorUsername
+        authorUsername = repository.owner?.username
         starsCount = "\(repository.starsCount) \(NSLocalizedString("Stars", comment: ""))"
         forksCount = "\(repository.forksCount) \(NSLocalizedString("Forks", comment: ""))"
         rank = repository.rank
         
-        if let authorProfileImageURLString = repository.authorProfileImageURLString {
+        if let authorProfileImageURLString = repository.owner?.profileImageURLString {
             authorProfileImageURL = URL(string: authorProfileImageURLString)
         }
         
@@ -54,7 +53,6 @@ final class RepositoryViewModel: HasRepositoryService {
     }
     
     func refreshData() {
-        
         SVProgressHUD.show()
         repositoryService?.retrieveReadme(repository: repository, completion: { [weak self] (readmeString) in
             

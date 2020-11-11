@@ -6,8 +6,6 @@
 //  Copyright © 2018 Samuel Tremblay. All rights reserved.
 //
 
-import Foundation
-
 enum ServiceFactory {
     static func resolve<Service>(serviceType: Service.Type) -> Service? {
         return Bootstrapper.getContainer().resolve(serviceType)

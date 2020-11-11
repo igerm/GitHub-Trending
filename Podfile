@@ -3,9 +3,9 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'Github Trends' do
-    platform :ios, '11.0'
-    
-    pod 'AlamofireObjectMapper'
+    platform :ios, '14.0'
+
+    pod 'AlamofireCodable'
     pod 'AlamofireRSSParser'
     pod 'AlamofireImage'
     pod 'AlamofireSwiftyJSON'

@@ -6,34 +6,24 @@
 //  Copyright © 2018 Samuel Tremblay. All rights reserved.
 //
 
-import ObjectMapper
+final class Repository: Codable {
 
-final class Repository: Mappable {
+    enum CodingKeys: String, CodingKey {
+        case name
+        case fullName = "full_name"
+        case projectDescription = "description"
+        case starsCount = "stargazers_count"
+        case forksCount = "forks"
+        case urlString = "html_url"
+        case owner
+    }
     
     var name: String?
     var fullName: String?
     var projectDescription: String?
-    var authorUsername: String?
-    var authorProfileImageURLString: String?
     var starsCount: Int = 0
     var forksCount: Int = 0
     var rank: Int = 0
     var urlString: String?
-    
-    convenience required init?(map: Map) {
-        self.init()
-    }
-    
-    func mapping(map: Map) {
-        
-        name <- map["name"]
-        fullName <- map["full_name"]
-        projectDescription <- map["description"]
-        authorUsername <- map["owner.login"]
-        authorProfileImageURLString <- map["owner.avatar_url"]
-        starsCount <- map["stargazers_count"]
-        forksCount <- map["forks"]
-        urlString <- map["html_url"]
-    }
+    var owner: Owner?
 }
-
