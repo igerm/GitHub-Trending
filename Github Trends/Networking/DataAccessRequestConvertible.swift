@@ -19,4 +19,3 @@ public protocol DataAccessRequestConvertible {
     var remoteDataAccessor: RemoteDataAccessor { get }
     var localDataAccessor: LocalDataAccessor { get }
 }
-

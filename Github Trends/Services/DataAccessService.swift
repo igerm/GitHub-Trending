@@ -6,9 +6,9 @@
 //  Copyright © 2020 Samuel Tremblay. All rights reserved.
 //
 
-import Foundation
 import RealmSwift
 import Alamofire
+import AlamofireCodable
 
 /// Service protocol definition
 protocol DataAccessServiceProtocol {
@@ -53,8 +53,7 @@ final class DataAccessService: DataAccessServiceProtocol {
     }
 
     func getObjects<T>(request: DataAccessRequestConvertible, _ closure: ((Response<DataAccessResults<T>, DataAccessError>) -> Void)?) where T: Codable, T: Object {
-
-        if let result: Results<T> = fetchObjectsWithRequest(request: request) {
+        if let result: Results<T> = fetchObjectsWithRequest(request: request), !result.isEmpty {
             closure?(.success(result))
         } else {
             apiService?.dataRequest(for: request.remoteDataAccessor).responseArray(completionHandler: { [weak self] (response: DataResponse<[T]>) in

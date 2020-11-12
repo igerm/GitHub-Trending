@@ -6,7 +6,6 @@
 //  Copyright © 2020 Samuel Tremblay. All rights reserved.
 //
 
-import Foundation
 import RealmSwift
 
 /// Service protocol definition

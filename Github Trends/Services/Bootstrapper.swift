@@ -13,15 +13,19 @@ struct Bootstrapper {
     private(set) var container = Container()
     
     init() {
-        container.register(DatabaseServiceProtocol.self) { _ in DatabaseService() }.inObjectScope(.container)
-        container.register(APIServiceProtocol.self) { _ in APIService() }.inObjectScope(.container)
+        container.register(DatabaseServiceProtocol.self) { _ in
+            DatabaseService()
+        }
+        container.register(APIServiceProtocol.self) { _ in
+            APIService()
+        }
         container.register(DataAccessServiceProtocol.self) { resolver in
             DataAccessService(databaseService: resolver.resolve(DatabaseServiceProtocol.self),
                               apiService: resolver.resolve(APIServiceProtocol.self))
-        }.inObjectScope(.container)
-        container.register(RepositoryServiceProtocol.self) { resolver in
-            RepositoryService(dataAccessService: resolver.resolve(DataAccessServiceProtocol.self))
-        }.inObjectScope(.container)
+        }
+        container.register(TrendsTableViewController.self) { resolver in
+            TrendsTableViewController(dataAccessService: resolver.resolve(DataAccessServiceProtocol.self))
+        }
     }
     
     static func getContainer() -> Container {

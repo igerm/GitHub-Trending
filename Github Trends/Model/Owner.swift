@@ -6,13 +6,15 @@
 //  Copyright © 2020 Samuel Tremblay. All rights reserved.
 //
 
-final class Owner: Codable {
+import RealmSwift
+
+final class Owner: Object, Codable {
 
     enum CodingKeys: String, CodingKey {
         case username = "login"
         case profileImageURLString = "avatar_url"
     }
 
-    var username: String?
-    var profileImageURLString: String?
+    @objc dynamic var username: String?
+    @objc dynamic var profileImageURLString: String?
 }

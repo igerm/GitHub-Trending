@@ -20,12 +20,12 @@ final class Repository: Object, Codable {
         case owner
     }
     
-    var name: String?
-    var fullName: String?
-    var projectDescription: String?
-    var starsCount: Int = 0
-    var forksCount: Int = 0
-    var rank: Int = 0
-    var urlString: String?
-    var owner: Owner?
+    @objc dynamic var name: String?
+    @objc dynamic var fullName: String?
+    @objc dynamic var projectDescription: String?
+    @objc dynamic var starsCount: Int = 0
+    @objc dynamic var forksCount: Int = 0
+    @objc dynamic var rank: Int = 0
+    @objc dynamic var urlString: String?
+    @objc dynamic var owner: Owner?
 }

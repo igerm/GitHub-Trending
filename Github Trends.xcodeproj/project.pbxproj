@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		223012DD255CDA2E00BC6CE5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223012DC255CDA2E00BC6CE5 /* SceneDelegate.swift */; };
 		226D815C20151E3500FF0C11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D815B20151E3500FF0C11 /* AppDelegate.swift */; };
-		226D816120151E3500FF0C11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 226D815F20151E3500FF0C11 /* Main.storyboard */; };
 		226D816320151E3500FF0C11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 226D816220151E3500FF0C11 /* Assets.xcassets */; };
 		226D816620151E3500FF0C11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 226D816420151E3500FF0C11 /* LaunchScreen.storyboard */; };
 		226D81732015268900FF0C11 /* TrendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D81722015268900FF0C11 /* TrendsTableViewController.swift */; };
@@ -16,14 +16,10 @@
 		226D81822015696600FF0C11 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D817F2015696600FF0C11 /* APIService.swift */; };
 		226D81832015696600FF0C11 /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D81802015696600FF0C11 /* ServiceFactory.swift */; };
 		226D81842015696600FF0C11 /* Bootstrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D81812015696600FF0C11 /* Bootstrapper.swift */; };
-		226D8186201569E500FF0C11 /* RepositoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D8185201569E500FF0C11 /* RepositoryService.swift */; };
 		226D81882015706000FF0C11 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D81872015706000FF0C11 /* Repository.swift */; };
 		226D818B201576F600FF0C11 /* RepositoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D818A201576F600FF0C11 /* RepositoryRouter.swift */; };
 		226D818D2015773400FF0C11 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D818C2015773400FF0C11 /* RouterProtocol.swift */; };
 		226D818F201577AF00FF0C11 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D818E201577AF00FF0C11 /* Extensions.swift */; };
-		226D81912015881A00FF0C11 /* TrendsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D81902015881A00FF0C11 /* TrendsListViewModel.swift */; };
-		226D81932015985100FF0C11 /* RepositoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D81922015985100FF0C11 /* RepositoryViewModel.swift */; };
-		226D81952015A98B00FF0C11 /* RepositoryDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D81942015A98B00FF0C11 /* RepositoryDetailTableViewController.swift */; };
 		229A919A255B673F008CB931 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229A9199255B673F008CB931 /* Owner.swift */; };
 		229A91D9255B7FCF008CB931 /* DataAccessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229A91D8255B7FCF008CB931 /* DataAccessService.swift */; };
 		229A91EA255B8199008CB931 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229A91E9255B8199008CB931 /* DatabaseService.swift */; };
@@ -34,9 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		223012DC255CDA2E00BC6CE5 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		226D815820151E3500FF0C11 /* Github Trends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Github Trends.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		226D815B20151E3500FF0C11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		226D816020151E3500FF0C11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		226D816220151E3500FF0C11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		226D816520151E3500FF0C11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		226D816720151E3500FF0C11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,14 +41,10 @@
 		226D817F2015696600FF0C11 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		226D81802015696600FF0C11 /* ServiceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceFactory.swift; sourceTree = "<group>"; };
 		226D81812015696600FF0C11 /* Bootstrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bootstrapper.swift; sourceTree = "<group>"; };
-		226D8185201569E500FF0C11 /* RepositoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryService.swift; sourceTree = "<group>"; };
 		226D81872015706000FF0C11 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		226D818A201576F600FF0C11 /* RepositoryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryRouter.swift; sourceTree = "<group>"; };
 		226D818C2015773400FF0C11 /* RouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
 		226D818E201577AF00FF0C11 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		226D81902015881A00FF0C11 /* TrendsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsListViewModel.swift; sourceTree = "<group>"; };
-		226D81922015985100FF0C11 /* RepositoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryViewModel.swift; sourceTree = "<group>"; };
-		226D81942015A98B00FF0C11 /* RepositoryDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailTableViewController.swift; sourceTree = "<group>"; };
 		229A9199255B673F008CB931 /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
 		229A91D8255B7FCF008CB931 /* DataAccessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAccessService.swift; sourceTree = "<group>"; };
 		229A91E9255B8199008CB931 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
@@ -98,13 +90,12 @@
 			isa = PBXGroup;
 			children = (
 				226D815B20151E3500FF0C11 /* AppDelegate.swift */,
-				226D818E201577AF00FF0C11 /* Extensions.swift */,
+				223012DC255CDA2E00BC6CE5 /* SceneDelegate.swift */,
 				226D817E2015696600FF0C11 /* Services */,
-				226D81712015266400FF0C11 /* View */,
-				226D816E2015262900FF0C11 /* ViewModel */,
+				226D81712015266400FF0C11 /* View Controller */,
 				226D8189201576E900FF0C11 /* Networking */,
 				226D816D2015262200FF0C11 /* Model */,
-				226D815F20151E3500FF0C11 /* Main.storyboard */,
+				226D818E201577AF00FF0C11 /* Extensions.swift */,
 				226D816220151E3500FF0C11 /* Assets.xcassets */,
 				226D816420151E3500FF0C11 /* LaunchScreen.storyboard */,
 				226D816720151E3500FF0C11 /* Info.plist */,
@@ -121,23 +112,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		226D816E2015262900FF0C11 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				226D81902015881A00FF0C11 /* TrendsListViewModel.swift */,
-				226D81922015985100FF0C11 /* RepositoryViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		226D81712015266400FF0C11 /* View */ = {
+		226D81712015266400FF0C11 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
 				226D81722015268900FF0C11 /* TrendsTableViewController.swift */,
 				226D8174201526DB00FF0C11 /* TrendTableViewCell.swift */,
-				226D81942015A98B00FF0C11 /* RepositoryDetailTableViewController.swift */,
 			);
-			path = View;
+			path = "View Controller";
 			sourceTree = "<group>";
 		};
 		226D817E2015696600FF0C11 /* Services */ = {
@@ -148,7 +129,6 @@
 				226D817F2015696600FF0C11 /* APIService.swift */,
 				229A91D8255B7FCF008CB931 /* DataAccessService.swift */,
 				229A91E9255B8199008CB931 /* DatabaseService.swift */,
-				226D8185201569E500FF0C11 /* RepositoryService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -245,7 +225,6 @@
 			files = (
 				226D816620151E3500FF0C11 /* LaunchScreen.storyboard in Resources */,
 				226D816320151E3500FF0C11 /* Assets.xcassets in Resources */,
-				226D816120151E3500FF0C11 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,19 +300,16 @@
 			files = (
 				229A91EA255B8199008CB931 /* DatabaseService.swift in Sources */,
 				226D81832015696600FF0C11 /* ServiceFactory.swift in Sources */,
-				226D81932015985100FF0C11 /* RepositoryViewModel.swift in Sources */,
 				226D818B201576F600FF0C11 /* RepositoryRouter.swift in Sources */,
 				226D818D2015773400FF0C11 /* RouterProtocol.swift in Sources */,
 				229A91F4255B8679008CB931 /* Response.swift in Sources */,
-				226D81952015A98B00FF0C11 /* RepositoryDetailTableViewController.swift in Sources */,
-				226D8186201569E500FF0C11 /* RepositoryService.swift in Sources */,
+				223012DD255CDA2E00BC6CE5 /* SceneDelegate.swift in Sources */,
 				229A91F8255B8F87008CB931 /* RepositoryDataAccessor.swift in Sources */,
 				229A91F1255B85C4008CB931 /* DataAccessRequestConvertible.swift in Sources */,
 				226D81822015696600FF0C11 /* APIService.swift in Sources */,
 				226D81882015706000FF0C11 /* Repository.swift in Sources */,
 				226D815C20151E3500FF0C11 /* AppDelegate.swift in Sources */,
 				226D81732015268900FF0C11 /* TrendsTableViewController.swift in Sources */,
-				226D81912015881A00FF0C11 /* TrendsListViewModel.swift in Sources */,
 				226D81842015696600FF0C11 /* Bootstrapper.swift in Sources */,
 				226D818F201577AF00FF0C11 /* Extensions.swift in Sources */,
 				229A919A255B673F008CB931 /* Owner.swift in Sources */,
@@ -345,14 +321,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		226D815F20151E3500FF0C11 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				226D816020151E3500FF0C11 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		226D816420151E3500FF0C11 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
