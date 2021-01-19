@@ -1,6 +1,6 @@
 # GitHub Trending
 
-This is a simple project desmonstrating MVVM + Depedency injections listing the trending repos on GitHub (not provided in their API).
+This is a simple project demonstrating a scalable architecture using the context of listing the trending repos on GitHub (not provided in their API).
 
 ### Prerequisites
 
